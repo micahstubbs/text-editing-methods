@@ -1,0 +1,10 @@
+"Input Category","Input Type","Average Speed for adult [wpm]","Lower bound [wpm]","Upper bound [wpm]",emoji,citations
+handwriting,printing,13,5,20,📝,https://en.wikipedia.org/wiki/Words_per_minute#Handwriting
+handwriting,cursive,16,16,25,✍️,http://sci-hub.tw/https://dl.acm.org/citation.cfm?id=1518788
+"mobile typing",thumbs,13,11,15,📱👍,https://ux.stackexchange.com/questions/74623/touch-versus-trace-typing
+"mobile typing",swype,13,11,50,📱👆,https://ux.stackexchange.com/questions/74623/touch-versus-trace-typing
+"keyboard typing",querty,40,38,95,⌨️,https://www.livechatinc.com/typing-speed-test/#/global-scores
+"free-form speaking",audiobook,155,150,160,🎧📖,https://en.wikipedia.org/wiki/Words_per_minute#cite_note-14
+"free-form speaking","slide presentation",112,100,125,📽📊,https://en.wikipedia.org/wiki/Words_per_minute#cite_note-wong-15
+reading,aloud,228,198,258,📖🗣,https://en.wikipedia.org/wiki/Words_per_minute#Reading_and_comprehension
+reading,silently,300,180,900,📖🤫,https://en.wikipedia.org/wiki/Words_per_minute#Reading_and_comprehension|http://journals.sagepub.com/doi/pdf/10.1080/10862968909547667
