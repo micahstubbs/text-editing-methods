@@ -9,6 +9,10 @@ d3.csv('text-editing-methods-speed.csv')
       return d
     })
   )
+  .then(data => data.filter(d => d['Input Category'] !== 'reading'))
+  .then(data =>
+    data.sort((a, b) => a['Upper bound [wpm]'] - b['Upper bound [wpm]'])
+  )
   .then(data => draw({ data }))
 
 function draw({ data }) {
