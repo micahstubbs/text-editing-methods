@@ -24,7 +24,7 @@ function redraw({ data, parent, svg }) {
   // extract the width and the height that was computed by CSS
   const outerWidth = parent.clientWidth
   const outerHeight = parent.clientHeight
-  const margin = { left: 165, top: 10, right: 20, bottom: 90 }
+  const margin = { left: 165, top: 10, right: 50, bottom: 90 }
   const innerWidth = outerWidth - margin.left - margin.right
   const innerHeight = outerHeight - margin.top - margin.bottom
 
