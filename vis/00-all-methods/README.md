@@ -12,4 +12,8 @@ the data presented here combines the data presented in the post with additional 
 
 ---
 
+🗃 in github repo form at https://github.com/micahstubbs/text-editing-methods
+
+---
+
 an iteration on [Horizontal Bar Chart](http://bl.ocks.org/curran/8ac62d283a7aa6e95de8) from [@currankelleher](https://twitter.com/currankelleher)
