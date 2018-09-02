@@ -104,9 +104,9 @@ function draw({ data }) {
   xAxisG.call(xAxis)
   yAxisG.call(yAxis)
 
-  const lines = g.selectAll('.line').data(data)
   const yOffset = yScale.bandwidth() / 2
 
+  const lines = g.selectAll('.line').data(data)
   lines
     .enter()
     .append('line')
@@ -119,5 +119,14 @@ function draw({ data }) {
     .style('stroke', blogBlue)
     .style('stroke-width', '2px')
 
-  lines.exit().remove()
+  const radius = 5
+  const circles = g.selectAll('.circle').data(data)
+  circles
+    .enter()
+    .append('circle')
+    .attr('class', '.circle')
+    .attr('cx', d => xScale(d[meanVariable]))
+    .attr('cy', d => yScale(d[yVariable]) + yOffset)
+    .attr('r', radius)
+    .style('fill', blogBlue)
 }
