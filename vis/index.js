@@ -56,6 +56,8 @@ function redraw({ data, parent, svg }) {
     .attr('class', 'label')
     .text(xAxisLabelText)
 
+  const yAxisG = g.append('g').attr('class', 'y axis')
+
   const xScale = d3
     .scaleLinear()
     .domain([0, d3.max(data, d => d['Upper bound [wpm]'])])
@@ -67,8 +69,8 @@ function redraw({ data, parent, svg }) {
     .range([innerHeight, 0])
 
   const xAxis = d3.axisBottom(xScale).ticks(5)
-  // .tickFormat()
-  // .outerTickSize(0)
+  const yAxis = d3.axisLeft(yScale)
 
   xAxisG.call(xAxis)
+  yAxisG.call(yAxis)
 }
