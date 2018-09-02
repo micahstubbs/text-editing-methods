@@ -24,9 +24,12 @@ function redraw({ data, parent, svg }) {
   // extract the width and the height that was computed by CSS
   const outerWidth = parent.clientWidth
   const outerHeight = parent.clientHeight
-  const margin = { left: 165, top: 0, right: 20, bottom: 90 }
+  const margin = { left: 165, top: 10, right: 20, bottom: 90 }
   const innerWidth = outerWidth - margin.left - margin.right
   const innerHeight = outerHeight - margin.top - margin.bottom
+
+  const xVariable = 'Upper bound [wpm]'
+  const yVariable = 'emoji'
 
   const xAxisLabelText = 'input speed, words per minute'
   const xAxisLabelOffset = 75
@@ -60,12 +63,12 @@ function redraw({ data, parent, svg }) {
 
   const xScale = d3
     .scaleLinear()
-    .domain([0, d3.max(data, d => d['Upper bound [wpm]'])])
+    .domain([0, d3.max(data, d => d[xVariable])])
     .range([0, innerWidth])
 
   const yScale = d3
     .scaleBand()
-    .domain(data.map(d => d.emoji).reverse())
+    .domain(data.map(d => d[yVariable]).reverse())
     .range([innerHeight, 0])
 
   const xAxis = d3.axisBottom(xScale).ticks(5)
@@ -73,4 +76,17 @@ function redraw({ data, parent, svg }) {
 
   xAxisG.call(xAxis)
   yAxisG.call(yAxis)
+
+  const lines = g.selectAll('rect').data(data)
+
+  lines
+    .enter()
+    .append('rect')
+    .attr('height', yScale.bandwidth() / 4)
+    .attr('x', 0)
+    .attr('y', d => yScale(d[yVariable]))
+    .attr('width', d => xScale(d[xVariable]))
+    .style('fill', 'steelblue')
+
+  lines.exit().remove()
 }
