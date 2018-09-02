@@ -24,8 +24,13 @@ function draw({ data }) {
   const outerWidth = 960
   const outerHeight = 500
   const margin = { left: 50, top: 10, right: 50, bottom: 75 }
+
+  // colors
   const themeDarkGray = '#444444'
   const themeBookEmojiGray = '#dfdfe8'
+  const blogBlue = '#367da2'
+  const blogGray = '#eaeaea'
+  const blogDarkGray = '#333333'
 
   const selector = 'body'
   d3.select(selector)
@@ -46,7 +51,7 @@ function draw({ data }) {
     .attr('y', 0)
     .attr('width', outerWidth)
     .attr('height', outerHeight)
-    .style('fill', themeBookEmojiGray)
+    .style('fill', blogGray)
 
   const g = svg
     .append('g')
@@ -111,7 +116,7 @@ function draw({ data }) {
     .attr('y1', d => yScale(d[yVariable]) + yOffset)
     .attr('y2', d => yScale(d[yVariable]) + yOffset)
     // .attr('y2', yScale.bandwidth() / 4)
-    .style('stroke', 'steelblue')
+    .style('stroke', blogBlue)
     .style('stroke-width', '2px')
 
   lines.exit().remove()
