@@ -2,7 +2,7 @@ data on different text input methods inspired by [@devonzuegel](https://twitter.
 
 read the macroblog post at http://devonzuegel.com/post/comparison-of-text-editing-methods
 
-the data presented here is a combination of the data presented in the post and some additional research by [@micahstubbs](https://twitter.com/micahstubbs)
+the data presented here combines the data presented in the post with additional research by [@micahstubbs](https://twitter.com/micahstubbs)
 
 ---
 
