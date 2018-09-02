@@ -11,7 +11,10 @@ d3.csv('text-editing-methods-speed.csv')
   )
   .then(data => data.filter(d => d['Input Category'] !== 'reading'))
   .then(data =>
-    data.sort((a, b) => a['Upper bound [wpm]'] - b['Upper bound [wpm]'])
+    data.sort(
+      (a, b) =>
+        a['Average Speed for adult [wpm]'] - b['Average Speed for adult [wpm]']
+    )
   )
   .then(data => draw({ data }))
 
