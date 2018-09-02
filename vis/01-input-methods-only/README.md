@@ -8,4 +8,4 @@ the data presented here combines the data presented in the post with additional 
 
 💡this table as a chart:
 
-[![input-methods-table](https://user-images.githubusercontent.com/2119400/44952767-9a03a100-ae3c-11e8-8a6a-4ae7d01392f9.jpg)](https://twitter.com/devonzuegel/status/1035905169802706944)
+[![input-methods-table-960px](https://user-images.githubusercontent.com/2119400/44952908-a9d0b480-ae3f-11e8-958c-7dd9830a19aa.jpg)](https://twitter.com/devonzuegel/status/1035905169802706944)
