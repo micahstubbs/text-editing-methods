@@ -65,7 +65,7 @@ function redraw({ data, parent, svg }) {
 
   const yScale = d3
     .scaleBand()
-    .domain(data.map(d => d.emoji))
+    .domain(data.map(d => d.emoji).reverse())
     .range([innerHeight, 0])
 
   const xAxis = d3.axisBottom(xScale).ticks(5)
