@@ -23,7 +23,7 @@ function draw({ data }) {
 
   const outerWidth = 960
   const outerHeight = 500
-  const margin = { left: 50, top: 10, right: 50, bottom: 75 }
+  const margin = { left: 100, top: 10, right: 50, bottom: 75 }
 
   // colors
   const themeDarkGray = '#444444'
