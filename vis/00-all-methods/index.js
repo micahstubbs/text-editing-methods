@@ -9,6 +9,12 @@ d3.csv('text-editing-methods-speed.csv')
       return d
     })
   )
+  .then(data =>
+    data.sort(
+      (a, b) =>
+        a['Average Speed for adult [wpm]'] - b['Average Speed for adult [wpm]']
+    )
+  )
   .then(data => draw({ data }))
 
 function draw({ data }) {
@@ -16,9 +22,14 @@ function draw({ data }) {
 
   const outerWidth = 960
   const outerHeight = 500
-  const margin = { left: 50, top: 10, right: 50, bottom: 75 }
+  const margin = { left: 100, top: 10, right: 50, bottom: 75 }
+
+  // colors
   const themeDarkGray = '#444444'
   const themeBookEmojiGray = '#dfdfe8'
+  const blogBlue = '#367da2'
+  const blogGray = '#eaeaea'
+  const blogDarkGray = '#333333'
 
   const selector = 'body'
   d3.select(selector)
@@ -39,7 +50,7 @@ function draw({ data }) {
     .attr('y', 0)
     .attr('width', outerWidth)
     .attr('height', outerHeight)
-    .style('fill', themeBookEmojiGray)
+    .style('fill', blogGray)
 
   const g = svg
     .append('g')
@@ -53,7 +64,7 @@ function draw({ data }) {
   const maxVariable = 'Upper bound [wpm]'
   const yVariable = 'emoji'
 
-  const xAxisLabelText = 'input speed, words per minute'
+  const xAxisLabelText = 'input speed in words per minute (more is faster)'
   const xAxisLabelOffset = 50
 
   console.log('width', outerWidth)
@@ -68,7 +79,7 @@ function draw({ data }) {
     .append('text')
     .style('text-anchor', 'middle')
     .style('fill', themeDarkGray)
-    .style('font-size', 16)
+    .style('font-size', 20)
     .attr('x', innerWidth / 2)
     .attr('y', xAxisLabelOffset)
     .attr('class', 'label')
@@ -92,9 +103,9 @@ function draw({ data }) {
   xAxisG.call(xAxis)
   yAxisG.call(yAxis)
 
-  const lines = g.selectAll('.line').data(data)
   const yOffset = yScale.bandwidth() / 2
 
+  const lines = g.selectAll('.line').data(data)
   lines
     .enter()
     .append('line')
@@ -104,8 +115,17 @@ function draw({ data }) {
     .attr('y1', d => yScale(d[yVariable]) + yOffset)
     .attr('y2', d => yScale(d[yVariable]) + yOffset)
     // .attr('y2', yScale.bandwidth() / 4)
-    .style('stroke', 'steelblue')
+    .style('stroke', blogBlue)
     .style('stroke-width', '2px')
 
-  lines.exit().remove()
+  const radius = 5
+  const circles = g.selectAll('.circle').data(data)
+  circles
+    .enter()
+    .append('circle')
+    .attr('class', '.circle')
+    .attr('cx', d => xScale(d[meanVariable]))
+    .attr('cy', d => yScale(d[yVariable]) + yOffset)
+    .attr('r', radius)
+    .style('fill', blogBlue)
 }
