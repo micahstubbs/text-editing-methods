@@ -39,7 +39,6 @@ function draw({ data }) {
     .append('svg')
     .attr('width', outerWidth)
     .attr('height', outerHeight)
-    .style('border', '1px solid #c3c3c3')
 
   const parent = document.getElementById('vis')
   const svg = d3.select(parent).select('svg')
@@ -115,7 +114,6 @@ function draw({ data }) {
     .attr('x2', d => xScale(d[maxVariable]))
     .attr('y1', d => yScale(d[yVariable]) + yOffset)
     .attr('y2', d => yScale(d[yVariable]) + yOffset)
-    // .attr('y2', yScale.bandwidth() / 4)
     .style('stroke', blogBlue)
     .style('stroke-width', '2px')
 
