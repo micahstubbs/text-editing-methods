@@ -65,7 +65,7 @@ function draw({ data }) {
   const maxVariable = 'Upper bound [wpm]'
   const yVariable = 'emoji'
 
-  const xAxisLabelText = 'input speed, words per minute'
+  const xAxisLabelText = 'input speed in words per minute (more is faster)'
   const xAxisLabelOffset = 50
 
   console.log('width', outerWidth)
@@ -80,7 +80,7 @@ function draw({ data }) {
     .append('text')
     .style('text-anchor', 'middle')
     .style('fill', themeDarkGray)
-    .style('font-size', 16)
+    .style('font-size', 20)
     .attr('x', innerWidth / 2)
     .attr('y', xAxisLabelOffset)
     .attr('class', 'label')
