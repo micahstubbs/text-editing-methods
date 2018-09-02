@@ -23,18 +23,8 @@ function draw({ data }) {
   const parent = document.getElementById('vis')
   const svg = d3.select(parent).select('svg')
 
-  // draw the first time
-  redraw({ data, parent, svg })
-
-  // redraw based on the new size whenever
-  // the browser window is resized
-  window.addEventListener('resize', redraw.bind(null, { data, parent, svg }))
-}
-
-function redraw({ data, parent, svg }) {
-  // extract the width and the height that was computed by CSS
-  const outerWidth = parent.clientWidth
-  const outerHeight = parent.clientHeight
+  const outerWidth = 960
+  const outerHeight = 500
   const margin = { left: 165, top: 10, right: 50, bottom: 90 }
   const innerWidth = outerWidth - margin.left - margin.right
   const innerHeight = outerHeight - margin.top - margin.bottom
