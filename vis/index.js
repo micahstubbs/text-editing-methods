@@ -91,6 +91,7 @@ function redraw({ data, parent, svg }) {
   yAxisG.call(yAxis)
 
   const lines = g.selectAll('.line').data(data)
+  const yOffset = yScale.bandwidth() / 2
 
   lines
     .enter()
@@ -98,8 +99,8 @@ function redraw({ data, parent, svg }) {
     .attr('class', '.line')
     .attr('x1', d => xScale(d[minVariable]))
     .attr('x2', d => xScale(d[maxVariable]))
-    .attr('y1', d => yScale(d[yVariable]))
-    .attr('y2', d => yScale(d[yVariable]))
+    .attr('y1', d => yScale(d[yVariable]) + yOffset)
+    .attr('y2', d => yScale(d[yVariable]) + yOffset)
     // .attr('y2', yScale.bandwidth() / 4)
     .style('stroke', 'steelblue')
     .style('stroke-width', '2px')
