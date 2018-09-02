@@ -1,4 +1,15 @@
-d3.csv('text-editing-methods-speed.csv').then(data => draw({ data }))
+d3.csv('text-editing-methods-speed.csv')
+  .then(data =>
+    data.map(d => {
+      d['Average Speed for adult [wpm]'] = Number(
+        d['Average Speed for adult [wpm]']
+      )
+      d['Lower bound [wpm]'] = Number(d['Lower bound [wpm]'])
+      d['Upper bound [wpm]'] = Number(d['Upper bound [wpm]'])
+      return d
+    })
+  )
+  .then(data => draw({ data }))
 
 function draw({ data }) {
   console.log('data', data)
@@ -28,7 +39,9 @@ function redraw({ data, parent, svg }) {
   const innerWidth = outerWidth - margin.left - margin.right
   const innerHeight = outerHeight - margin.top - margin.bottom
 
-  const xVariable = 'Upper bound [wpm]'
+  const meanVariable = 'Average Speed for adult [wpm]'
+  const minVariable = 'Lower bound [wpm]'
+  const maxVariable = 'Upper bound [wpm]'
   const yVariable = 'emoji'
 
   const xAxisLabelText = 'input speed, words per minute'
@@ -63,7 +76,7 @@ function redraw({ data, parent, svg }) {
 
   const xScale = d3
     .scaleLinear()
-    .domain([0, d3.max(data, d => d[xVariable])])
+    .domain([0, d3.max(data, d => d[maxVariable])])
     .range([0, innerWidth])
 
   const yScale = d3
@@ -77,16 +90,19 @@ function redraw({ data, parent, svg }) {
   xAxisG.call(xAxis)
   yAxisG.call(yAxis)
 
-  const lines = g.selectAll('rect').data(data)
+  const lines = g.selectAll('.line').data(data)
 
   lines
     .enter()
-    .append('rect')
-    .attr('height', yScale.bandwidth() / 4)
-    .attr('x', 0)
-    .attr('y', d => yScale(d[yVariable]))
-    .attr('width', d => xScale(d[xVariable]))
-    .style('fill', 'steelblue')
+    .append('line')
+    .attr('class', '.line')
+    .attr('x1', d => xScale(d[minVariable]))
+    .attr('x2', d => xScale(d[maxVariable]))
+    .attr('y1', d => yScale(d[yVariable]))
+    .attr('y2', d => yScale(d[yVariable]))
+    // .attr('y2', yScale.bandwidth() / 4)
+    .style('stroke', 'steelblue')
+    .style('stroke-width', '2px')
 
   lines.exit().remove()
 }
